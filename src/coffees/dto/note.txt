@@ -1,0 +1,8 @@
+// dto let us create a definition for the shape of the data 
+// thats commin into the body of an API request
+
+install
+npm i class-validator class-transformer 
+
+// Implement validation rules in our CreateCoffeeDto
+import { IsString } from 'class-validator';

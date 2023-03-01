@@ -35,6 +35,8 @@ export class CoffeesController {
   @HttpCode(HttpStatus.GONE)
 
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    //add console.log to see what type of our request body CreateCoffeeDto is
+    console.log(createCoffeeDto instanceof CreateCoffeeDto)
     return this.coffeesServices.create(createCoffeeDto);
     // return `This action creates a coffee`;
   }
