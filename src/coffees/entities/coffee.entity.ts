@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'; //video :Creating a TypeORM Entity
+import { Column, Entity,  JoinTable,  ManyToMany,  PrimaryGeneratedColumn } from 'typeorm'; //video :Creating a TypeORM Entity
+import { Flavor } from './flavor.entity';
 
 @Entity() //each entity class represent a sql table //sql table === 'coffee'
 export class Coffee {
@@ -11,6 +12,12 @@ export class Coffee {
   @Column() //each column here is "not" nullable, REQUIRED by default
   brand: string;
 
-  @Column('json', { nullable: true })//typeorm now knows that flavor should store arrays as JSON
-  flavors: string[];
+
+  // @Column('json', { nullable: true })//typeorm now knows that flavor should store arrays as JSON
+ 
+  @JoinTable()
+  @ManyToMany(type => Flavor,(flavor) => flavor.coffees) //function that returns a refrence to the entity
+   flavors: string[];
+
+ 
 }
