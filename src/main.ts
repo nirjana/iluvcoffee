@@ -7,11 +7,15 @@ async function bootstrap() {
   // Apply the ValidationPipe globally in our main.ts file
 app.useGlobalPipes(
   new ValidationPipe({
-    whitelist:true,
-    transform:true,
-    forbidNonWhitelisted: true //to give error message for unwanted key values in body
+    whitelist: true,
+    transform: true,
+    forbidNonWhitelisted: true,
+    transformOptions: {
+      enableImplicitConversion: true,
+    },
   }),
 );
   await app.listen(3000);
+  console.log('Server listening on port 3000');
 }
 bootstrap();
